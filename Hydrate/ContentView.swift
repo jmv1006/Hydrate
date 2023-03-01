@@ -28,6 +28,9 @@ struct ContentView: View {
                     .padding(.trailing)
                 }
                 
+                Text("Hydrate")
+                    .font(.largeTitle)
+                
                 Spacer()
                 
                 CurrentOverviewView(total_drank: total_drank, goal: goal)
@@ -41,6 +44,8 @@ struct ContentView: View {
                     Text("Log Water")
                 }
             }
+            .background(Color("backgroundgray"))
+            .foregroundColor(.white)
         }
     }
 }

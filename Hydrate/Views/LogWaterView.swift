@@ -16,43 +16,44 @@ struct LogWaterView: View {
     var units = ["oz", "liters", "cups"]
     
     var body: some View {
-        VStack(spacing: 20) {
-            Spacer()
+        ZStack {
+            Color("backgroundgray")
+                .ignoresSafeArea()
+            
             VStack {
-                VStack {
-                    Text("Amount Drank:")
-                        .font(.largeTitle)
-                    HStack {
-                        TextField("", value: $logged_amount, format: .number)
-                            .keyboardType(.numberPad)
-                            .fixedSize()
-                            .font(.largeTitle)
+                Spacer()
+                
+                VStack(spacing: 25) {
+                    HStack(spacing: 40) {
+                        Image(systemName: "drop")
+                            .resizable()
+                            .frame(width: 150, height: 200)
                         
-                        Picker("Units", selection: $selected_unit) {
-                            ForEach(units, id: \.self) {
-                                Text($0)
-                                    .font(.largeTitle)
-                            }
-                        }
+                        Text("Units Here")
                     }
-                }
-                VStack{
-                    Text("Total Drank Today:")
-                        .font(.largeTitle)
-                    HStack {
-                        Text("\(calc_total_drank())")
-                            .font(.largeTitle)
-                        Text("oz")
-                            .font(.largeTitle)
+                    .frame(height: 550)
+                    .padding()
+                    .border(.red)
+                    
+                    HStack(spacing: 50) {
+                        Text("Increment")
+                        Text("Decrement")
                     }
+                    .border(.gray)
                 }
-            }
-            Spacer()
-            Button("Log Water") {
-                drank_today = drank_today + logged_amount
-                dismiss()
+                
+                Spacer()
+                
+                Button("Log Water") {
+                    drank_today = drank_today + logged_amount
+                    dismiss()
+                }
+                .padding()
+                .font(.headline)
+                .border(.gray)
             }
         }
+        .foregroundColor(.white)
     }
     
     func calc_total_drank() -> Int {
