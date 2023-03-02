@@ -9,14 +9,36 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var preferences: UserPreferences
+    @State var displayName = "Jonathan"
     
     var body: some View {
-        VStack{
-            Form {
-                Text("Username")
+        ZStack{
+            Color("backgroundgray")
+                .ignoresSafeArea()
+            
+            VStack {
+                Text("Settings")
+                    .font(.largeTitle)
+                    .padding()
+                
+                VStack {
+                    HStack {
+                        Text("Display Name: ")
+                            .font(.title2)
+                        Spacer()
+                    }
+                    HStack {
+                        Text("Units: ")
+                            .font(.title2)
+                        Spacer()
+                    }
+                }
+                .padding()
+                .frame(width: 350)
+                Spacer()
             }
-            .border(.red)
         }
+        .foregroundColor(.white)
     }
 }
 

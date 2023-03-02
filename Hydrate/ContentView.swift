@@ -28,20 +28,27 @@ struct ContentView: View {
                     .padding(.trailing)
                 }
                 
-                Text("Hydrate")
-                    .font(.largeTitle)
+                VStack(spacing: 40) {
+                    Text("Hydrate")
+                        .font(.largeTitle)
+                    Image(systemName: "drop")
+                        .resizable()
+                        .frame(width: 100, height: 150)
+                }
                 
                 Spacer()
                 
                 CurrentOverviewView(total_drank: total_drank, goal: goal)
                 
                 Spacer()
-                Spacer()
                 
                 NavigationLink {
                     LogWaterView(drank_today: $total_drank)
                 } label: {
                     Text("Log Water")
+                        .frame(width: UIScreen.main.bounds.width * 0.75, height: 40)
+                        .background(.blue)
+                        .padding()
                 }
             }
             .background(Color("backgroundgray"))

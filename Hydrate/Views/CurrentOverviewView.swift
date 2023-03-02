@@ -13,6 +13,12 @@ struct CurrentOverviewView: View {
     
     var body: some View {
         VStack(spacing: 20) {
+            
+            if total_drank >= goal {
+                Text("You've met your goal. Keep on drinking!")
+                    .font(.title2)
+            }
+            
             Text("Amount Drank Today:")
                 .font(.largeTitle)
             HStack {
